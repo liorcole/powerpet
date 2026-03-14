@@ -1,12 +1,12 @@
 import { useState, useRef } from "react";
 
 const COLORS = {
-  accent: "#FF6B2B",
-  accentLight: "#FF8F5C",
-  black: "#0A0A0A",
-  cream: "#FAF8F5",
+  accent: "#0071E3",
+  accentLight: "#2997FF",
+  black: "#1D1D1F",
+  cream: "#FBFBFD",
   white: "#FFFFFF",
-  green: "#2DD4A0",
+  green: "#34C759",
 };
 
 const STEPS = [
@@ -21,11 +21,11 @@ const STEPS = [
 
 const Logo = ({ onClick }) => (
   <div onClick={onClick} style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }}>
-    <div style={{ width: 32, height: 32, borderRadius: 8, background: COLORS.accent, display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={{ width: 32, height: 32, borderRadius: 6, background: COLORS.black, display: "flex", alignItems: "center", justifyContent: "center" }}>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21c-1.5 0-5-2.5-7-6s-2-7 0-9 4.5-2 7 1c2.5-3 5-3 7-1s2 5.5 0 9-5.5 6-7 6z" fill="white"/></svg>
     </div>
-    <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: "-0.02em" }}>
-      super<span style={{ color: COLORS.accent }}>paw</span>
+    <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: "-0.02em", color: COLORS.black }}>
+      powerpet
     </span>
   </div>
 );
@@ -34,9 +34,9 @@ const inputStyle = {
   width: "100%",
   padding: "14px 16px",
   fontSize: 16,
-  fontFamily: "'DM Sans', sans-serif",
-  border: "1.5px solid #D5D0C8",
-  borderRadius: 10,
+  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+  border: "1.5px solid #D1D1D6",
+  borderRadius: 8,
   background: COLORS.white,
   outline: "none",
   boxSizing: "border-box",
@@ -45,13 +45,13 @@ const inputStyle = {
 
 const btnBase = {
   padding: "13px 32px",
-  borderRadius: 10,
+  borderRadius: 8,
   fontSize: 15,
   fontWeight: 600,
   cursor: "pointer",
-  transition: "all .2s",
+  transition: "background .2s",
   border: "none",
-  fontFamily: "'DM Sans', sans-serif",
+  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
 };
 
 export default function Onboarding({ onExit }) {
@@ -187,8 +187,8 @@ export default function Onboarding({ onExit }) {
                 alignItems: "center",
                 gap: 12,
                 padding: "14px 16px",
-                borderRadius: 10,
-                border: `1.5px solid ${formData.sex === opt ? COLORS.accent : "#D5D0C8"}`,
+                borderRadius: 8,
+                border: `1.5px solid ${formData.sex === opt ? COLORS.accent : "#D1D1D6"}`,
                 background: formData.sex === opt ? `${COLORS.accent}08` : COLORS.white,
                 cursor: "pointer",
                 transition: "all .2s",
@@ -257,8 +257,8 @@ export default function Onboarding({ onExit }) {
             onDrop={handleDrop}
             onClick={() => fileRef.current?.click()}
             style={{
-              border: `2px dashed ${dragOver ? COLORS.accent : "#D5D0C8"}`,
-              borderRadius: 14,
+              border: `2px dashed ${dragOver ? COLORS.accent : "#D1D1D6"}`,
+              borderRadius: 10,
               padding: "40px 20px",
               textAlign: "center",
               cursor: "pointer",
@@ -266,9 +266,9 @@ export default function Onboarding({ onExit }) {
               transition: "all .2s",
             }}
           >
-            <div style={{ fontSize: 36, marginBottom: 8 }}>📷</div>
+            <div style={{ fontSize: 15, fontWeight: 600, color: COLORS.black, marginBottom: 4 }}>Upload a photo</div>
             <div style={{ fontSize: 15, fontWeight: 500, color: "#666" }}>
-              Drag & drop a photo, or <span style={{ color: COLORS.accent, fontWeight: 600 }}>browse</span>
+              Drag & drop, or <span style={{ color: COLORS.accent, fontWeight: 600 }}>browse</span>
             </div>
             <div style={{ fontSize: 12, color: "#AAA", marginTop: 4 }}>JPG, PNG — this is optional</div>
           </div>
@@ -284,7 +284,7 @@ export default function Onboarding({ onExit }) {
               <img
                 src={photoPreview}
                 alt="Dog preview"
-                style={{ maxWidth: "100%", maxHeight: 200, borderRadius: 12, objectFit: "cover" }}
+                style={{ maxWidth: "100%", maxHeight: 200, borderRadius: 10, objectFit: "cover" }}
               />
               <div
                 onClick={(e) => {
@@ -310,19 +310,21 @@ export default function Onboarding({ onExit }) {
     return (
       <div style={{
         position: "fixed", inset: 0, background: COLORS.cream, zIndex: 1000,
-        display: "flex", flexDirection: "column", fontFamily: "'DM Sans', sans-serif",
+        display: "flex", flexDirection: "column", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
       }}>
         <div style={{ padding: "20px 32px" }}>
           <Logo onClick={onExit} />
         </div>
         <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <div style={{ textAlign: "center", maxWidth: 440 }}>
-            <div style={{ fontSize: 56, marginBottom: 16 }}>🎉</div>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 36, fontWeight: 700, margin: "0 0 12px", letterSpacing: "-0.02em" }}>
+            <div style={{ width: 56, height: 56, borderRadius: 28, background: `${COLORS.green}18`, display: "inline-flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke={COLORS.green} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </div>
+            <h1 style={{ fontSize: 36, fontWeight: 700, margin: "0 0 12px", letterSpacing: "-0.02em" }}>
               You're all set{formData.dogName ? `, ${formData.dogName}` : ""}!
             </h1>
             <p style={{ fontSize: 16, color: "#666", lineHeight: 1.6, margin: "0 0 32px" }}>
-              We'll use this info to build a personalized health profile. Welcome to Superpaw.
+              We'll use this info to build a personalized health profile. Welcome to Powerpet.
             </p>
             <button
               onClick={onExit}
@@ -342,7 +344,7 @@ export default function Onboarding({ onExit }) {
   return (
     <div style={{
       position: "fixed", inset: 0, background: COLORS.cream, zIndex: 1000,
-      display: "flex", flexDirection: "column", fontFamily: "'DM Sans', sans-serif",
+      display: "flex", flexDirection: "column", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
     }}>
       {/* Header */}
       <div style={{ padding: "20px 32px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -353,18 +355,18 @@ export default function Onboarding({ onExit }) {
       </div>
 
       {/* Progress bar */}
-      <div style={{ height: 3, background: "#E8E5E0", margin: "0 32px" }}>
+      <div style={{ height: 3, background: "#E5E5EA", margin: "0 32px" }}>
         <div style={{ height: "100%", width: `${progress}%`, background: COLORS.accent, borderRadius: 2, transition: "width .3s ease" }} />
       </div>
 
       {/* Content */}
       <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
         <div style={{
-          background: COLORS.white, borderRadius: 20, padding: "40px 36px", width: "100%", maxWidth: 480,
-          border: "1px solid #E8E5E0", boxShadow: "0 4px 24px rgba(0,0,0,.04)",
+          background: COLORS.white, borderRadius: 14, padding: "40px 36px", width: "100%", maxWidth: 480,
+          border: "1px solid #E5E5EA", boxShadow: "0 2px 12px rgba(0,0,0,.03)",
         }}>
           <h2 style={{
-            fontFamily: "'Playfair Display', serif", fontSize: 24, fontWeight: 700, marginBottom: 28,
+            fontSize: 24, fontWeight: 700, marginBottom: 28,
             letterSpacing: "-0.02em", lineHeight: 1.2, marginTop: 0,
           }}>
             {currentStepData.question}
@@ -376,9 +378,9 @@ export default function Onboarding({ onExit }) {
             {step > 0 ? (
               <button
                 onClick={back}
-                style={{ ...btnBase, background: "transparent", color: "#666", border: "1.5px solid #D5D0C8" }}
+                style={{ ...btnBase, background: "transparent", color: "#666", border: "1.5px solid #D1D1D6" }}
                 onMouseEnter={(e) => { e.target.style.borderColor = COLORS.accent; e.target.style.color = COLORS.accent; }}
-                onMouseLeave={(e) => { e.target.style.borderColor = "#D5D0C8"; e.target.style.color = "#666"; }}
+                onMouseLeave={(e) => { e.target.style.borderColor = "#D1D1D6"; e.target.style.color = "#666"; }}
               >
                 Back
               </button>
@@ -390,7 +392,7 @@ export default function Onboarding({ onExit }) {
               disabled={!canAdvance()}
               style={{
                 ...btnBase,
-                background: canAdvance() ? COLORS.black : "#D5D0C8",
+                background: canAdvance() ? COLORS.black : "#D1D1D6",
                 color: "white",
                 cursor: canAdvance() ? "pointer" : "not-allowed",
               }}
