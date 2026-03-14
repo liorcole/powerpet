@@ -153,7 +153,7 @@ const Nav = ({ activeSection, onSignUp }) => {
           </span>
         </div>
         <div style={{ display: "flex", gap: 32, fontSize: 13, fontWeight: 500, color: "#666" }}>
-          {["Science","Dashboard","Pricing"].map(t => (
+          {["Science","Dashboard"].map(t => (
             <a key={t} href={`#${t.toLowerCase()}`} style={{ color: "inherit", textDecoration: "none", transition: "color .2s",
               borderBottom: activeSection === t.toLowerCase() ? `2px solid ${COLORS.accent}` : "2px solid transparent", paddingBottom: 2 }}
               onMouseEnter={e => e.target.style.color = COLORS.accent} onMouseLeave={e => e.target.style.color = "#666"}>
@@ -407,60 +407,6 @@ const Protocol = () => (
   </Section>
 );
 
-// --- PRICING ---
-const PricingSection = () => (
-  <Section id="pricing" bg={COLORS.cream}>
-    <div style={{ textAlign: "center", marginBottom: 48 }}>
-      <Badge color={COLORS.accent} bg={`${COLORS.accent}10`}>PLANS</Badge>
-      <h2 style={{ fontSize: 40, fontWeight: 700, marginTop: 16, letterSpacing: "-0.02em" }}>
-        One platform. Every insight.
-      </h2>
-    </div>
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, maxWidth: 960, margin: "0 auto" }}>
-      {[
-        { name: "Essential", price: "$149", period: "/year", desc: "Start understanding your dog's biology", features: [
-          "100+ blood biomarkers (2x/year)", "DNA breed + 270 health conditions", "Biological age baseline", "Vitality Score dashboard", "Personalized nutrition plan", "Quarterly protocol updates"
-        ], cta: "Start Here", accent: false },
-        { name: "Complete", price: "$349", period: "/year", desc: "The full longevity stack", features: [
-          "Everything in Essential", "Gut microbiome analysis (2x/year)", "Annual liquid biopsy cancer screen", "Wearable integration (PetPace / Invoxia / Fi)", "24/7 vital monitoring + alerts", "Vet-shareable health reports", "AI longevity protocol with supplement recs"
-        ], cta: "Most Popular", accent: true },
-        { name: "Founder", price: "$599", period: "/year", desc: "For the truly obsessed dog parent", features: [
-          "Everything in Complete", "Quarterly blood panels (4x/year)", "Epigenetic age tracking (2x/year)", "Monthly telehealth vet consultation", "Early access to longevity interventions", "Dedicated health concierge", "Multi-dog household pricing"
-        ], cta: "Join Founders", accent: false },
-      ].map(p => (
-        <div key={p.name} style={{
-          background: p.accent ? COLORS.black : COLORS.white, color: p.accent ? "white" : COLORS.black,
-          borderRadius: 14, padding: 32, border: p.accent ? "none" : "1px solid #E5E5EA",
-          boxShadow: p.accent ? "0 8px 32px rgba(0,0,0,.12)" : "none",
-          position: "relative"
-        }}>
-          {p.accent && <div style={{ position: "absolute", top: -12, left: "50%", transform: "translateX(-50%)",
-            background: COLORS.accent, color: "white", borderRadius: 20, padding: "5px 16px", fontSize: 11, fontWeight: 700 }}>RECOMMENDED</div>}
-          <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 4, color: p.accent ? COLORS.accentLight : COLORS.accent }}>{p.name}</div>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 2, marginBottom: 6 }}>
-            <span style={{ fontSize: 40, fontWeight: 800 }}>{p.price}</span>
-            <span style={{ fontSize: 14, color: p.accent ? "#999" : "#AAA" }}>{p.period}</span>
-          </div>
-          <div style={{ fontSize: 13, color: p.accent ? "#999" : "#888", marginBottom: 24 }}>{p.desc}</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
-            {p.features.map((f, i) => (
-              <div key={i} style={{ display: "flex", gap: 8, fontSize: 13, lineHeight: 1.4 }}>
-                <span style={{ color: COLORS.green, flexShrink: 0 }}>✓</span>
-                <span style={{ color: p.accent ? "#CCC" : "#666" }}>{f}</span>
-              </div>
-            ))}
-          </div>
-          <button style={{
-            width: "100%", padding: "13px 0", borderRadius: 8, fontSize: 14, fontWeight: 600, cursor: "pointer",
-            background: p.accent ? COLORS.accent : "transparent", color: p.accent ? "white" : COLORS.black,
-            border: p.accent ? "none" : `1.5px solid #D1D1D6`, transition: "background .2s"
-          }}>{p.cta}</button>
-        </div>
-      ))}
-    </div>
-  </Section>
-);
-
 // --- FOOTER ---
 const FooterSection = () => (
   <footer style={{ background: COLORS.black, color: "#999", padding: "60px 24px 40px" }}>
@@ -513,7 +459,6 @@ export default function App() {
       <HowItWorks />
       <DashboardSection />
       <Protocol />
-      <PricingSection />
       <FooterSection />
     </div>
   );
