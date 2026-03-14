@@ -190,7 +190,7 @@ const Hero = () => (
           <button style={{ background: COLORS.black, color: "white", border: "none", borderRadius: 10, padding: "14px 32px",
             fontSize: 15, fontWeight: 600, cursor: "pointer", transition: "all .2s" }}
             onMouseEnter={e => e.target.style.background = COLORS.accent} onMouseLeave={e => e.target.style.background = COLORS.black}>
-            Start with a Test Kit — $149
+            Sign Up
           </button>
           <button style={{ background: "transparent", color: COLORS.black, border: `1.5px solid #D5D0C8`, borderRadius: 10,
             padding: "14px 24px", fontSize: 15, fontWeight: 500, cursor: "pointer" }}>
