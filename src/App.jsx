@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import Onboarding from "./Onboarding";
 
 const COLORS = {
   accent: "#FF6B2B",
@@ -133,7 +134,7 @@ const Section = ({ children, bg = "transparent", id, style: s = {} }) => (
 );
 
 // --- Navigation ---
-const Nav = ({ activeSection }) => {
+const Nav = ({ activeSection, onSignUp }) => {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 40);
@@ -162,7 +163,7 @@ const Nav = ({ activeSection }) => {
             </a>
           ))}
         </div>
-        <button style={{ background: COLORS.accent, color: "white", border: "none", borderRadius: 8, padding: "8px 20px",
+        <button onClick={onSignUp} style={{ background: COLORS.accent, color: "white", border: "none", borderRadius: 8, padding: "8px 20px",
           fontSize: 13, fontWeight: 600, cursor: "pointer", transition: "transform .2s, box-shadow .2s" }}
           onMouseEnter={e => { e.target.style.transform = "scale(1.04)"; e.target.style.boxShadow = "0 4px 16px rgba(255,107,43,.35)"; }}
           onMouseLeave={e => { e.target.style.transform = "scale(1)"; e.target.style.boxShadow = "none"; }}>
@@ -174,7 +175,7 @@ const Nav = ({ activeSection }) => {
 };
 
 // --- HERO ---
-const Hero = () => (
+const Hero = ({ onSignUp }) => (
   <Section style={{ paddingTop: 140, paddingBottom: 60 }}>
     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
       <div>
@@ -187,7 +188,7 @@ const Hero = () => (
           Track 100+ biomarkers. Decode their DNA. Monitor vitals in real-time. Get a personalized longevity protocol — all in one place.
         </p>
         <div style={{ display: "flex", gap: 14, marginTop: 32 }}>
-          <button style={{ background: COLORS.black, color: "white", border: "none", borderRadius: 10, padding: "14px 32px",
+          <button onClick={onSignUp} style={{ background: COLORS.black, color: "white", border: "none", borderRadius: 10, padding: "14px 32px",
             fontSize: 15, fontWeight: 600, cursor: "pointer", transition: "all .2s" }}
             onMouseEnter={e => e.target.style.background = COLORS.accent} onMouseLeave={e => e.target.style.background = COLORS.black}>
             Sign Up
@@ -504,10 +505,16 @@ const FooterSection = () => (
 
 // --- APP ---
 export default function App() {
+  const [view, setView] = useState("landing");
+
+  if (view === "onboarding") {
+    return <Onboarding onExit={() => setView("landing")} />;
+  }
+
   return (
     <div style={styles.page}>
-      <Nav />
-      <Hero />
+      <Nav onSignUp={() => setView("onboarding")} />
+      <Hero onSignUp={() => setView("onboarding")} />
       <SocialProof />
       <HowItWorks />
       <DashboardSection />
